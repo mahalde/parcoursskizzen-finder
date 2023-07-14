@@ -40,7 +40,7 @@
 	}
 
 	function displayData(data: number | null | undefined, suffix?: string) {
-		if (data === null || data === undefined || data === -1) {
+		if (data === null || data === undefined || data == -1) {
 			return '--';
 		}
 
@@ -112,7 +112,7 @@
 							<div class="text-gray-500">
 								{parcours.location}{parcours.date ? ', ' + convertDate(parcours.date) : ''}
 							</div>
-							<p class="text-xl">{parcours.competitionName}</p>
+							<p class="text-xl">{parcours.competitionname}</p>
 							<div class="mt-4 gap-x-2 flex justify-between flex-wrap">
 								<div>
 									<div class="uppercase">Höhe:</div>
@@ -120,11 +120,11 @@
 								</div>
 								<div>
 									<div class="uppercase">Hindernisse:</div>
-									<div class="text-right">{displayData(parcours.numberOfObstacles)}</div>
+									<div class="text-right">{displayData(parcours.numberofobstacles)}</div>
 								</div>
 								<div>
 									<div class="uppercase">Sprünge:</div>
-									<div class="text-right">{displayData(parcours.numberOfEfforts)}</div>
+									<div class="text-right">{displayData(parcours.numberofefforts)}</div>
 								</div>
 							</div>
 							<a

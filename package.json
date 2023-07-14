@@ -20,6 +20,7 @@
 		"autoprefixer": "^10.4.14",
 		"cheerio": "^1.0.0-rc.12",
 		"date-fns": "^2.30.0",
+		"dotenv": "^16.3.1",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.30.0",
@@ -37,8 +38,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"sequelize": "^6.32.1",
-		"sqlite3": "5.1.6",
+		"@vercel/postgres": "^0.4.0",
 		"zod": "^3.21.4"
 	}
 }

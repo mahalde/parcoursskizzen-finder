@@ -1,8 +1,11 @@
 import * as cheerio from 'cheerio';
+import { config } from 'dotenv';
 import { initDB, insertIntoDB } from './database.js';
-import { getAllTournaments, getAllParcourses } from './parse.js';
-import { mapAsync } from './utils.js';
+import { getAllParcourses, getAllTournaments } from './parse.js';
 import { analyzePDF } from './pdf.js';
+import { mapAsync } from './utils.js';
+
+config();
 
 const MIN_YEAR = 2014;
 const MAX_YEAR = new Date().getFullYear();
@@ -10,7 +13,7 @@ const EQUI_SCORE_BASE_URL = 'https://equi-score.de/results';
 
 async function main() {
 	try {
-		const db = initDB('database.db');
+		initDB();
 
 		for (let year = MIN_YEAR; year <= MAX_YEAR; year++) {
 			const resultURL = new URL(EQUI_SCORE_BASE_URL);
@@ -42,11 +45,9 @@ async function main() {
 					(parcours) => parcours !== null
 				);
 
-				insertIntoDB(db, parsedParcourses, tournament);
+				await insertIntoDB(parsedParcourses, tournament);
 			}
 		}
-
-		db.close();
 	} catch (e) {
 		console.error(e);
 	}
